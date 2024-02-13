@@ -18,7 +18,10 @@ const App = () => {
       component = <Loja></Loja>
       break;
     case "/Doacao":
-      component = <Doacao></Doacao>
+      component = 
+      <Doacao>
+        
+      </Doacao>
       break;
     case "/Comprador":
       component = <Comprador></Comprador>

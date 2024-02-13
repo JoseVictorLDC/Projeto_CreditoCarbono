@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import "./Doacao.css"
 
 const Doacao = () => {
-    // Estados para armazenar os valores dos campos
-    const [endereco, setEndereco] = useState('');
-
     const [valor, setValor] = useState('');
       
     return (
@@ -12,25 +9,8 @@ const Doacao = () => {
             <div className="container d-flex align-items-center justify-content-center">
                 <div className="card">
                     <div className="card-body">
-                        <h2 className="text-center mb-4">Formulário</h2>
+                        <h2 className="text-center mb-4">Doação</h2>
                         <form>
-                            {/* Seção Endereço */}
-                            <div className="mb-3">
-                                <h4>Endereço</h4>
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            id="endereco"
-                                            placeholder="Chave"
-                                            value={endereco}
-                                            onChange={(e) => setEndereco(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
                             {/* Seção Valor */}
                             <div className="mb-3">
                                 <h4>Valor</h4>
@@ -40,7 +20,7 @@ const Doacao = () => {
                                             type="text"
                                             className="form-control"
                                             id="valor"
-                                            placeholder="R$"
+                                            placeholder="Sepolia"
                                             value={valor}
                                             onChange={(e) => setValor(e.target.value)}
                                         />
@@ -49,7 +29,7 @@ const Doacao = () => {
                             </div>
                         </form>
 
-                        <button>Enviar</button>
+                        <button className='buttonDoacao'>Enviar</button>
                     </div>
                 </div>
             </div>
