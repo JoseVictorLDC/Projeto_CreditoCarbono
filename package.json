@@ -1,0 +1,47 @@
+{
+  "name": "wagmi-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "biome check .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/contracts": "^4.9.5",
+    "@rainbow-me/rainbowkit": "^2.0.0",
+    "@tanstack/react-query": "^5.0.5",
+    "@thirdweb-dev/react": "^4.4.8",
+    "@thirdweb-dev/sdk": "^4.0.35",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "ethers": "^5.7.2",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "next": "^14.1.0",
+    "path-browserify": "^1.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1",
+    "tailwindcss": "^3.4.1",
+    "viem": "^2.7.9",
+    "wagmi": "^2.5.7",
+    "web-vitals": "^3.5.2",
+    "web3modal": "^1.9.12"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.1.2",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.1.0",
+    "@wagmi/cli": "latest",
+    "buffer": "^6.0.3",
+    "hardhat": "^2.20.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
+  }
+}

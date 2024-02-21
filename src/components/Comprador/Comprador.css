@@ -1,0 +1,22 @@
+.Loja {
+    column-count: 4;
+    display: flex;
+}
+
+.TudoLoja {
+    width: 96vw;
+    z-index: 1;
+}
+
+.centerNFT {
+    width: 96vw;
+    display: flex;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.VendaMarketplaceNone {
+    display: none;
+}
