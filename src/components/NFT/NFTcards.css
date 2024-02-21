@@ -1,0 +1,38 @@
+.NFTboxCards {
+    margin-left: 4vw;
+    padding: 1.5vw;
+    width: 23vw;
+    background-color: rgba(201, 201, 201, 0.513);
+    margin-bottom: 2vw;
+    border-radius: 10px;
+}
+
+.imagem {
+    width: 20vw;
+    border-radius: 10px;
+}
+
+.colunaTextoNFT {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1vw;
+}
+
+.buttonNFT {
+    text-decoration: none;
+    background-color: rgb(49, 140, 49);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.resellNFTButton {
+    display: none;
+}
+
+.buttonNFTnone {
+    display: none;
+}

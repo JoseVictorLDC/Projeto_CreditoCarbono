@@ -1,0 +1,45 @@
+.card {
+    margin-top: 20vh;
+}
+
+.buttonDoacao {
+    text-decoration: none;
+    background-color: rgb(49, 140, 49);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+}
+
+.centerConnectButtonDoacao {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin-bottom: 5vh;
+    margin-top: 10vh;
+}
+
+.colunaGeralDoacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    align-items: center;
+}
+
+.ButtonSend {
+    text-decoration: none;
+    background-color: rgb(49, 140, 49);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+    margin-bottom: 2vh;
+}
+
+.colunaCentral {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

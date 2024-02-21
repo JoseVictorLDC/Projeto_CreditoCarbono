@@ -1,0 +1,36 @@
+.centerPerfil {
+    display: flex;
+    width: 96vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerSuasNFTs {
+    margin-top: 6vh;
+    margin-bottom: 4vh;
+}
+
+.centerGeral {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.dados {
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+.centerGeralColuna {
+    display: flex;
+    column-count: 4;
+    width: 100vw;
+    height: auto;
+}
+
+.vendedorButton {
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
