@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { uploadFileToIPFS, uploadJSONToIPFS } from "../../pinata.js";
-import Marketplace from '../../Marketplace.json';
+import { uploadFileToIPFS, uploadJSONToIPFS } from "../../pinatas/SaoPaulo1.js";
+import Marketplace from '../../MarketplacesDescricao/SaoPaulo1.json';
 import { ethers } from "ethers";
 import React from 'react';
 import "./ListaNFT.css"
@@ -101,7 +101,7 @@ function ListaNFT() {
             enableButton();
             updateMessage("");
             updateFormParams({ name: '', description: '', price: '' });
-            window.location.replace("/Comprador")
+            window.location.replace("/Estado")
         }
         catch (e) {
             alert("Upload error" + e)
@@ -150,7 +150,7 @@ function ListaNFT() {
                                 </div>
                                 <br></br>
                                 <div className="">{message}</div>
-                                <button onClick={listNFT} className='ButtonSend' id="list-button">
+                                <button onClick={listNFT} className='button' id="list-button">
                                     List NFT
                                 </button>
                             </div>

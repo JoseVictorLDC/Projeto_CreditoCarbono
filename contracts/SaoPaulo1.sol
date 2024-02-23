@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract NFTMarketplace is ERC721URIStorage {
+contract SaoPaulo1 is ERC721URIStorage {
 
     using Counters for Counters.Counter;
     //_tokenIds variable has the most recent minted tokenId
@@ -16,7 +16,7 @@ contract NFTMarketplace is ERC721URIStorage {
     //owner is the contract address that created the smart contract
     address payable owner;
     //The fee charged by the marketplace to be allowed to list an NFT
-    uint256 listPrice = 0.01 ether;
+    uint256 listPrice = 0.00001 ether;
 
     //The structure to store info about a listed token
     struct ListedToken {
@@ -39,7 +39,7 @@ contract NFTMarketplace is ERC721URIStorage {
     //This mapping maps tokenId to token info and is helpful when retrieving details about a tokenId
     mapping(uint256 => ListedToken) private idToListedToken;
 
-    constructor() ERC721("NFTMarketplace", "NFTM") {
+    constructor() ERC721("SaoPaulo1", "NFTM") {
         owner = payable(msg.sender);
     }
 
@@ -66,7 +66,7 @@ contract NFTMarketplace is ERC721URIStorage {
     }
 
     //The first time a token is created, it is listed here
-    function createToken(string memory tokenURI, uint256 price) public payable returns (uint) {
+    function createToken(string memory tokenURI, uint256 price, bool currentlyListed) public payable returns (uint) {
         //Increment the tokenId counter, which is keeping track of the number of minted NFTs
         _tokenIds.increment();
         uint256 newTokenId = _tokenIds.current();
@@ -78,7 +78,7 @@ contract NFTMarketplace is ERC721URIStorage {
         _setTokenURI(newTokenId, tokenURI);
 
         //Helper function to update Global variables and emit an event
-        createListedToken(newTokenId, price, true);
+        createListedToken(newTokenId, price, currentlyListed);
 
         return newTokenId;
     }

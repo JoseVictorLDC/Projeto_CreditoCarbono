@@ -2,40 +2,29 @@ import NavBar from "./components/NavBar/NavBar";
 import TelaInicial from './pages/TelaInicial/TelaInicial';
 import Loja from './components/Loja/Loja';
 import Doacao from "./components/Doacao/Doacao"
-import Comprador from './components/Comprador/Comprador';
 import Vendedor from './components/Vendedor/Vendedor';
-
 import React from 'react';
-
 import '@rainbow-me/rainbowkit/styles.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
-import {
-  arbitrum,
-  base,
-  mainnet,
-  optimism,
-  polygon,
-  polygonMumbai,
-  sepolia,
-  zora,
-} from 'wagmi/chains';
+import { sepolia } from 'wagmi/chains';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 import ListaNFT from './components/ListaNFT/ListaNFT';
 import NFTpagina from './components/NFT/NFTcards';
 import Perfil from './components/Perfil/Perfil';
 import SobreNos from './pages/SobreNos/SobreNos';
 import FaleConosco from './pages/FaleConosco/FaleConosco';
+import Estado from './pages/Estado/Estado';
+import Creditos from './pages/Creditos/Creditos';
+import MarketplaceAcre from './components/Marketplaces/SaoPaulo/SaoPaulo1';
 import {
-  ConnectWallet,
   metamaskWallet,
   coinbaseWallet,
   walletConnect,
   localWallet,
   embeddedWallet,
   rainbowWallet,
-  lightTheme,
 } from "@thirdweb-dev/react";
 
 const config = getDefaultConfig({
@@ -62,9 +51,6 @@ const App = () => {
     case "/Doacao":
       component = <Doacao></Doacao>
       break;
-    case "/Comprador":
-      component = <Comprador></Comprador>
-      break;
     case "/Vendedor":
       component = <Vendedor></Vendedor>
       break;
@@ -83,38 +69,47 @@ const App = () => {
     case "/FaleConosco":
       component = <FaleConosco></FaleConosco>
       break;
+    case "/Estado":
+      component = <Estado></Estado>
+      break;
+    case "/Creditos":
+      component = <Creditos></Creditos>
+      break;
+    case "/MarketplaceAcre":
+      component = <MarketplaceAcre></MarketplaceAcre>
+      break;
   }
   const queryClient = new QueryClient();
 
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-          <ThirdwebProvider
-            ChainId={sepolia}
-            supportedWallets={[
-              metamaskWallet({ recommended: true }),
-              coinbaseWallet({ recommended: true }),
-              walletConnect({ recommended: true }),
-              localWallet(),
-              embeddedWallet({
-                auth: {
-                  options: [
-                    "email",
-                    "google",
-                    "apple",
-                    "facebook",
-                  ],
-                },
-              }),
-              rainbowWallet(),
-            ]}
-            authConfig={{
-              authUrl: "/api/auth",
-              domain: "https://example.com",
-            }}>
-            <NavBar />
-            {component}
-          </ThirdwebProvider>
+        <ThirdwebProvider
+          ChainId={sepolia}
+          supportedWallets={[
+            metamaskWallet({ recommended: true }),
+            coinbaseWallet({ recommended: true }),
+            walletConnect({ recommended: true }),
+            localWallet(),
+            embeddedWallet({
+              auth: {
+                options: [
+                  "email",
+                  "google",
+                  "apple",
+                  "facebook",
+                ],
+              },
+            }),
+            rainbowWallet(),
+          ]}
+          authConfig={{
+            authUrl: "/api/auth",
+            domain: "https://example.com",
+          }}>
+          <NavBar />
+          {component}
+        </ThirdwebProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

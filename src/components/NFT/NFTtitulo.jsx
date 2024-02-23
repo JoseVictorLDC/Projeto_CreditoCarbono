@@ -1,9 +1,6 @@
-import {
-    Link,
-} from "react-router-dom";
 import { GetIpfsUrlFromPinata } from "../../utils/utils";
 import React from 'react';
-import MarketplaceJSON from "../../Marketplace.json";
+import SaoPaulo100JSON from "../../MarketplacesDescricao/SaoPaulo100.json";
 import { ethers } from 'ethers';
 import "./NFTtitulo.css"
 
@@ -15,7 +12,7 @@ function NFTtitulo(data) {
             const signer = provider.getSigner();
     
             //Pull the deployed contract instance
-            let contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer);
+            let contract = new ethers.Contract(SaoPaulo100JSON.address, SaoPaulo100JSON.abi, signer);
             const salePrice = ethers.utils.parseUnits(data.data.price, 'ether')
             //run the executeSale function
             let transaction = await contract.executeSale(data.data.tokenId, {value:salePrice});
