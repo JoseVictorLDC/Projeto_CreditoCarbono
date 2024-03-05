@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import "./Vendedor.css"
-import AuthProvider from '../AuthProvider/AuthProvider';
 import "../../../firebaseConfig"; // Add this line prevent firebase not loading error
 import { getFirestore, addDoc, collection } from "firebase/firestore";
 
