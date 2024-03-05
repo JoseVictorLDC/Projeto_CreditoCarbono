@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import MarketplaceCreditoCarbonoJSON from "../../MarketplacesDescricao/MarketplaceCreditoCarbono.json";
+import MarketplaceCreditoCarbonoJSON from "../../databases/MarketplaceCreditoCarbono.json";
 import axios from "axios";
 import { useState } from "react";
 import { ethers } from "ethers";

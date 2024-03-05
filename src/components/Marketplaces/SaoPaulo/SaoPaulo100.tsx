@@ -1,5 +1,5 @@
 import NFTtitulo from "../../NFT/NFTtitulo.jsx";
-import Marketplace2 from '../../../MarketplacesDescricao/MarketplaceCreditoCarbono.json';
+import Marketplace2 from '../../../databases/MarketplaceCreditoCarbono.json';
 import axios from "axios";
 import { useState } from "react";
 import React from 'react';
@@ -26,7 +26,7 @@ function SaoPaulo100(props: Props) {
     const Name = Estado + ", Brasil";
     const Description = Creditos + " creditos de carbono, " + cidade1 + ", " + cidade2 + ", " + cidade3
 
-    const FileURL = "https://gateway.pinata.cloud/ipfs/QmRfGa1C2f8tVLikiwdp4cnnTcuzsUZzihqu2QAzTnnSax"
+    const FileURL = "https://gateway.pinata.cloud/ipfs/QmXwf55FgzFPHZuahmTbhjgx2NSnJwr3DH8avFSPwNpZJX"
 
     async function uploadDadosNFT1() {
         const { price } = formParams;
