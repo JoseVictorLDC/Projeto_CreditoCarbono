@@ -1,7 +1,7 @@
 import { GetIpfsUrlFromPinata } from "../../utils/utils";
 import React from 'react';
 import "./NFTcards.css"
-import SaoPaulo100 from '../../MarketplacesDescricao/SaoPaulo100.json';
+import MarketplaceCreditoCarbono from '../../MarketplacesDescricao/MarketplaceCreditoCarbono.json';
 import { ethers } from "ethers";
 
 function NFTcards(data) {
@@ -14,7 +14,7 @@ function NFTcards(data) {
         const signer = provider.getSigner();
 
         //Pull the deployed contract instance
-        let contract = new ethers.Contract(SaoPaulo100.address, SaoPaulo100.abi, signer);
+        let contract = new ethers.Contract(MarketplaceCreditoCarbono.address, MarketplaceCreditoCarbono.abi, signer);
         let listingPrice = await contract.getListPrice();
         listingPrice = listingPrice.toString();
 

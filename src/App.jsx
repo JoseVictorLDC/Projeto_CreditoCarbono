@@ -10,7 +10,6 @@ import { WagmiProvider } from 'wagmi';
 import { sepolia } from 'wagmi/chains';
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { ThirdwebProvider } from "@thirdweb-dev/react";
-import ListaNFT from './components/ListaNFT/ListaNFT';
 import NFTpagina from './components/NFT/NFTcards';
 import Perfil from './components/Perfil/Perfil';
 import SobreNos from './pages/SobreNos/SobreNos';
@@ -53,9 +52,6 @@ const App = () => {
       break;
     case "/Vendedor":
       component = <Vendedor></Vendedor>
-      break;
-    case "/ListaNFT":
-      component = <ListaNFT></ListaNFT>
       break;
     case "/NFTpagina":
       component = <NFTpagina></NFTpagina>

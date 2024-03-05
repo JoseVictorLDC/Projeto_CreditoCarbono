@@ -30,9 +30,6 @@ const NavBar = () => {
                   <a className="nav-link" href="/Loja">Loja</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/ListaNFT">Liste seu NFT</a>
-                </li>
-                <li className="nav-item">
                   <a className="nav-link" href="/Doacao">Doação</a>
                 </li>
                 <li className="nav-item">

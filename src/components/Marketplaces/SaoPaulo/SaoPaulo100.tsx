@@ -1,5 +1,5 @@
 import NFTtitulo from "../../NFT/NFTtitulo.jsx";
-import Marketplace2 from '../../../MarketplacesDescricao/SaoPaulo100.json';
+import Marketplace2 from '../../../MarketplacesDescricao/MarketplaceCreditoCarbono.json';
 import axios from "axios";
 import { useState } from "react";
 import React from 'react';
@@ -75,7 +75,7 @@ function SaoPaulo100(props: Props) {
             listingPrice = listingPrice.toString()
 
             //actually create the NFT
-            let transaction = await contract.createToken(metadataURL, price, true, { value: listingPrice })
+            let transaction = await contract.createToken(metadataURL, price, true, 1, { value: listingPrice })
             await transaction.wait()
 
             alert("NFT listada na loja com sucesso!");
@@ -95,7 +95,7 @@ function SaoPaulo100(props: Props) {
         //Pull the deployed contract instance
         let contract = new ethers.Contract(Marketplace2.address, Marketplace2.abi, signer)
         //create an NFT Token
-        let transaction = await contract.getAllNFTs()
+        let transaction = await contract.getAllNFTs(1)
 
         //Fetch all the details of every NFT from the contract and display
         const items = await Promise.all(transaction.map(async i => {

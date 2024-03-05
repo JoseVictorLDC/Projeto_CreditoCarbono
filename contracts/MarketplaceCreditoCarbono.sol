@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract SaoPaulo1 is ERC721URIStorage {
+contract MarketplaceCreditoCarbono is ERC721URIStorage {
 
     using Counters for Counters.Counter;
     //_tokenIds variable has the most recent minted tokenId
@@ -25,6 +25,7 @@ contract SaoPaulo1 is ERC721URIStorage {
         address payable seller;
         uint256 price;
         bool currentlyListed;
+        uint256 codigoIdentificador;
     }
 
     //the event emitted when a token is successfully listed
@@ -33,13 +34,14 @@ contract SaoPaulo1 is ERC721URIStorage {
         address owner,
         address seller,
         uint256 price,
-        bool currentlyListed
+        bool currentlyListed,
+        uint256 codigoIdentificador
     );
 
     //This mapping maps tokenId to token info and is helpful when retrieving details about a tokenId
     mapping(uint256 => ListedToken) private idToListedToken;
 
-    constructor() ERC721("SaoPaulo1", "NFTM") {
+    constructor() ERC721("MarketplaceCreditoCarbono", "MCC") {
         owner = payable(msg.sender);
     }
 
@@ -66,7 +68,7 @@ contract SaoPaulo1 is ERC721URIStorage {
     }
 
     //The first time a token is created, it is listed here
-    function createToken(string memory tokenURI, uint256 price, bool currentlyListed) public payable returns (uint) {
+    function createToken(string memory tokenURI, uint256 price, bool currentlyListed, uint256 codigoIdentificador) public payable returns (uint) {
         //Increment the tokenId counter, which is keeping track of the number of minted NFTs
         _tokenIds.increment();
         uint256 newTokenId = _tokenIds.current();
@@ -78,12 +80,12 @@ contract SaoPaulo1 is ERC721URIStorage {
         _setTokenURI(newTokenId, tokenURI);
 
         //Helper function to update Global variables and emit an event
-        createListedToken(newTokenId, price, currentlyListed);
+        createListedToken(newTokenId, price, currentlyListed, codigoIdentificador);
 
         return newTokenId;
     }
 
-    function createListedToken(uint256 tokenId, uint256 price, bool currentlyListed) private {
+    function createListedToken(uint256 tokenId, uint256 price, bool currentlyListed, uint256 codigoIdentificador) private {
         //Make sure the sender sent enough ETH to pay for listing
         require(msg.value == listPrice, "Hopefully sending the correct price");
         //Just sanity check
@@ -95,7 +97,8 @@ contract SaoPaulo1 is ERC721URIStorage {
             payable(address(this)),
             payable(msg.sender),
             price,
-            currentlyListed
+            currentlyListed,
+            codigoIdentificador
         );
 
         _transfer(msg.sender, address(this), tokenId);
@@ -105,12 +108,13 @@ contract SaoPaulo1 is ERC721URIStorage {
             address(this),
             msg.sender,
             price,
-            currentlyListed
+            currentlyListed,
+            codigoIdentificador
         );
     }
     
     //This will return all the NFTs currently listed to be sold on the marketplace
-    function getAllNFTs() public view returns (ListedToken[] memory) {
+    function getAllNFTs(uint256 codigoDesejado) public view returns (ListedToken[] memory) {
         uint nftCount = _tokenIds.current();
         ListedToken[] memory tokens = new ListedToken[](nftCount);
         uint currentIndex = 0;
@@ -121,9 +125,11 @@ contract SaoPaulo1 is ERC721URIStorage {
         {
             currentId = i + 1;
             ListedToken storage currentItem = idToListedToken[currentId];
-            if(currentItem.currentlyListed == true) {
-                tokens[currentIndex] = currentItem;
-                currentIndex += 1;
+            if(currentItem.codigoIdentificador == codigoDesejado) {
+                if(currentItem.currentlyListed == true) {
+                    tokens[currentIndex] = currentItem;
+                    currentIndex += 1;
+                }
             }
         }
         //the array 'tokens' has the list of all NFTs in the marketplace

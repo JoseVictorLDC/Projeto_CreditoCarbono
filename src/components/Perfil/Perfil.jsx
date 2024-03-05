@@ -1,6 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import SaoPaulo100JSON from "../../MarketplacesDescricao/SaoPaulo100.json";
-import SaoPaulo1JSON from "../../MarketplacesDescricao/SaoPaulo1.json";
+import MarketplaceCreditoCarbonoJSON from "../../MarketplacesDescricao/MarketplaceCreditoCarbono.json";
 import axios from "axios";
 import { useState } from "react";
 import { ethers } from "ethers";
@@ -23,7 +22,7 @@ function Perfil() {
         const addr = await signer.getAddress();
 
         //Pull the deployed contract instance
-        let contract = new ethers.Contract(SaoPaulo100JSON.address, SaoPaulo100JSON.abi, signer)
+        let contract = new ethers.Contract(MarketplaceCreditoCarbonoJSON.address, MarketplaceCreditoCarbonoJSON.abi, signer)
 
         //create an NFT Token
         let transaction = await contract.getMyNFTs()
@@ -58,55 +57,11 @@ function Perfil() {
         updateTotalPrice(sumPrice.toPrecision(3));
     }
 
-    async function getNFTData2(tokenId) {
-        let sumPrice = 0;
-        //After adding your Hardhat network to your metamask, this code will get providers and signers
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const addr = await signer.getAddress();
-
-        //Pull the deployed contract instance
-        let contract = new ethers.Contract(SaoPaulo1JSON.address, SaoPaulo1JSON.abi, signer)
-
-        //create an NFT Token
-        let transaction = await contract.getMyNFTs()
-
-        /*
-        * Below function takes the metadata from tokenURI and the data returned by getMyNFTs() contract function
-        * and creates an object of information that is to be displayed
-        */
-
-        const items2 = await Promise.all(transaction.map(async i => {
-            const tokenURI = await contract.tokenURI(i.tokenId);
-            let meta = await axios.get(tokenURI);
-            meta = meta.data;
-
-            let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
-            let item = {
-                price,
-                tokenId: i.tokenId.toNumber(),
-                seller: i.seller,
-                owner: i.owner,
-                image: meta.image,
-                name: meta.name,
-                description: meta.description,
-                Listed: i.currentlyListed,
-            }
-            sumPrice += Number(price);
-            return item;
-        }))
-        updateData(items2);
-        updateFetched(true);
-        updateAddress(addr);
-        updateTotalPrice(sumPrice.toPrecision(3));
-    }
-
     const params = useParams();
     const tokenId = params.tokenId;
 
     if (!dataFetched)
         getNFTData(tokenId);
-        getNFTData2(tokenId);
 
     return (
         <AuthProvider>

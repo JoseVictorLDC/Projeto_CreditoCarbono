@@ -46,7 +46,7 @@ const Creditos = (props: Props) => {
                                                 setCreditos(e.target.value)
                                             }
                                         >
-                                            <option></option>
+                                            <option> </option>
                                             <option>1</option>
                                             <option>100</option>
                                             <option>1000</option>
