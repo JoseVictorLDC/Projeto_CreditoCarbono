@@ -1,5 +1,5 @@
 import NFTtitulo from "../../NFT/NFTtitulo.jsx";
-import Marketplace from '../../../MarketplacesDescricao/MarketplaceCreditoCarbono.json';
+import Marketplace from '../../../databases/MarketplaceCreditoCarbono.json';
 import axios from "axios";
 import { useState } from "react";
 import React from 'react';

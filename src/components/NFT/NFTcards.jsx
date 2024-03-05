@@ -1,7 +1,7 @@
 import { GetIpfsUrlFromPinata } from "../../utils/utils";
 import React from 'react';
 import "./NFTcards.css"
-import MarketplaceCreditoCarbono from '../../MarketplacesDescricao/MarketplaceCreditoCarbono.json';
+import MarketplaceCreditoCarbono from '../../databases/MarketplaceCreditoCarbono.json';
 import { ethers } from "ethers";
 
 function NFTcards(data) {
