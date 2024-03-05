@@ -5,18 +5,18 @@ const fs = require("fs");
 async function main() {
   const [deployer] = await ethers.getSigners();
   const balance = await deployer.getBalance();
-  const Marketplace = await hre.ethers.getContractFactory("NFTMarketplace");
-  const marketplace = await Marketplace.deploy();
+  const MarketplaceCreditoCarbono = await hre.ethers.getContractFactory("MarketplaceCreditoCarbono");
+  const marketplaceCreditoCarbono = await MarketplaceCreditoCarbono.deploy();
 
-  await marketplace.deployed();
+  await marketplaceCreditoCarbono.deployed();
 
   const data = {
-    address: marketplace.address,
-    abi: JSON.parse(marketplace.interface.format('json'))
+    address: marketplaceCreditoCarbono.address,
+    abi: JSON.parse(marketplaceCreditoCarbono.interface.format('json'))
   }
 
-  //This writes the ABI and address to the mktplace.json
-  fs.writeFileSync('./src/Marketplace.json', JSON.stringify(data))
+  //This writes the ABI and address to the mktplace2.json
+  fs.writeFileSync('./src/MarketplacesDescricao/MarketplaceCreditoCarbono.json', JSON.stringify(data))
 }
 
 main()

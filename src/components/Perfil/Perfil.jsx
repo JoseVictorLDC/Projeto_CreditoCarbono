@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import MarketplaceJSON from "../../Marketplace.json";
+import MarketplaceCreditoCarbonoJSON from "../../MarketplacesDescricao/MarketplaceCreditoCarbono.json";
 import axios from "axios";
 import { useState } from "react";
 import { ethers } from "ethers";
@@ -22,7 +22,7 @@ function Perfil() {
         const addr = await signer.getAddress();
 
         //Pull the deployed contract instance
-        let contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer)
+        let contract = new ethers.Contract(MarketplaceCreditoCarbonoJSON.address, MarketplaceCreditoCarbonoJSON.abi, signer)
 
         //create an NFT Token
         let transaction = await contract.getMyNFTs()
@@ -51,7 +51,6 @@ function Perfil() {
             sumPrice += Number(price);
             return item;
         }))
-
         updateData(items);
         updateFetched(true);
         updateAddress(addr);
@@ -60,6 +59,7 @@ function Perfil() {
 
     const params = useParams();
     const tokenId = params.tokenId;
+
     if (!dataFetched)
         getNFTData(tokenId);
 
