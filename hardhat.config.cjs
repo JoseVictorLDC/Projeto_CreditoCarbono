@@ -27,8 +27,8 @@ module.exports = {
       //accounts: [process.env.privateKey]
     },
     sepolia: {
-      url: "https://eth-sepolia.g.alchemy.com/v2/12K8o6rW6-RTe-H_eEWkrX7eqbUTbODN",
-      accounts: ["cdb71ee95b6b2d5e3cdbc0a36c8d533f33c6f3fd9b38c80e9bd71cfebe3257d3"]
+      url: process.env.REACT_APP_URL,
+      accounts: [process.env.REACT_APP_ACCOUNTS]
     }
   },
   solidity: {
