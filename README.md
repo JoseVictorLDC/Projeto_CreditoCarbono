@@ -5,6 +5,10 @@ Some basic commands are:
 
 ```
 cd Projeto_CreditoCarbono/
+```
+```
 npm install
+```
+```
 npm run dev
 ```
