@@ -16,7 +16,7 @@ async function main() {
   }
 
   //This writes the ABI and address to the mktplace2.json
-  fs.writeFileSync('./src/MarketplacesDescricao/MarketplaceCreditoCarbono.json', JSON.stringify(data))
+  fs.writeFileSync('./src/databases/MarketplaceCreditoCarbono.json', JSON.stringify(data))
 }
 
 main()
